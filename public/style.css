@@ -46,6 +46,12 @@ body {
     overflow-x: hidden;
   }
   
+  h3, h2, h1, .card-title {
+    hyphens: auto;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  
   a {
     color: white;
     text-decoration: underline;
@@ -198,6 +204,12 @@ body {
     padding: 4rem 1rem 3rem;
     text-align: center;
     color: white;
+  }
+
+  @media (max-width: 767px) {
+    .header-intro-wrapper {
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('assets/background-mobile.png') center center / cover no-repeat;
+    }
   }
   
   .logo-large {
