@@ -1,0 +1,712 @@
+/* Allgemeines Layout */
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+@font-face {
+    font-family: 'Inter';
+    src: url('fonts/assets/Inter-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Inter';
+    src: url('fonts/assets/Inter-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Inter';
+    src: url('fonts/assets/Inter-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Inter';
+    src: url('fonts/assets/Inter-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+  }
+ 
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #2B3340;
+    color: white;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  
+  a {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  
+  /* HEADER STYLES */
+  .main-header {
+    background-color: #e8e0d1;
+    padding: 0.8rem 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: opacity 0.3s ease, backdrop-filter 0.3s ease;
+    opacity: 1;
+  }
+  
+  .main-header.transparent {
+    opacity: 0.6;
+    backdrop-filter: blur(4px);
+  }
+  
+  /* Zentrierter Container */
+  .container {
+    width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .logo img {
+    height: 20px;
+    max-width: 150px;
+  }
+  
+  /* Burger Menü – immer sichtbar mobil */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    position: relative;
+    z-index: 1100; /* damit es über dem Menü bleibt */
+  }
+  
+  .hamburger .bar {
+    width: 100%;
+    height: 5px;
+    background-color: #2B3340;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Zustand: geöffnet */
+  .hamburger.open .bar-top {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .hamburger.open .bar-bottom {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+  
+  /* Navigation standardmäßig versteckt */
+  .main-nav {
+    display: none;
+  }
+  
+  /* Sichtbar, wenn per JS .open gesetzt wurde */
+  .main-nav.open {
+    display: block;
+    position: absolute;
+    top: 60px;
+    right: 2rem;
+    background-color: #e8e0d1;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 999;
+  }
+  
+  .main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .main-nav li + li {
+    margin-top: 0.8rem;
+  }
+  
+  .main-nav a {
+    text-decoration: none;
+    color: #2B3340;
+    font-weight: 500;
+  }
+  
+  /* Desktop-Version */
+  @media (min-width: 1024px) {
+    .main-nav {
+      display: block !important;
+      position: static;
+      background: none;
+      padding: 0;
+      box-shadow: none;
+    }
+  
+    .main-nav ul {
+      display: flex;
+      gap: 2rem;
+    }
+  
+    .main-nav li + li {
+      margin-top: 0;
+    }
+  
+    .hamburger {
+      display: none;
+    }
+  }
+  
+  /* Header + Intro mit Hintergrundbild */
+  .header-intro-wrapper {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('assets/background.png') center center / cover no-repeat;
+    padding: 4rem 1rem 3rem;
+    text-align: center;
+    color: white;
+  }
+  
+  .logo-large {
+    max-width: 260px;
+    margin: 0 auto 1.5rem;
+  }
+
+  @media (max-width: 767px) {
+    .logo-large {
+      max-width: 150px;
+    }
+  }
+  
+  .header-intro-wrapper .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    box-sizing: border-box;
+  }
+
+  /* Intro */
+  .intro {
+    text-align: center;
+    padding: 3rem 0 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .slogan {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+  
+  .slogan.mobile {
+    display: none;
+  }
+  
+  @media (max-width: 767px) {
+    .slogan.desktop {
+      display: none;
+    }
+  
+    .slogan.mobile {
+      display: block;
+      font-size: 1.6rem;
+    }
+  }
+  
+  
+  /* Über mich */
+  .about-wrapper {
+    background-color: #E5DCCD;
+    color: #2B3340;
+    width: 100%;
+  }
+
+  .about {
+    background-color: #E5DCCD;
+    color: #2B3340;
+    padding: 3rem 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-radius: 6px;
+  }
+
+  .statement {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 2rem;
+  }
+  
+  .about-grid {
+    display: flex;
+    align-items: center; /* Bild auf mittlere Texthöhe */
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .portrait {
+    width: 320px;
+    height: auto;
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .about-text {
+        text-align: justify;
+    }
+    
+    .portrait {
+      max-width: 60%;
+    }
+  }
+
+  
+  .about-text p {
+    margin-bottom: 0.5rem;
+  }
+  
+  .about-text {
+    flex: 2;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    text-align: justify;
+    font-size: 1rem;
+    line-height: 1.45; /* Vertikal gestauchter Text */
+  }
+  
+  /* Coaching */
+  .coaching {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    padding: 3rem 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  
+  .coaching-item {
+    background-color: #1f262f;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+  
+  .coaching-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  .coaching-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 1.5rem;
+    border-radius: 8px;
+  }
+  
+  .coaching-item h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
+  .coaching-item p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  .coaching-item p + p {
+    margin-top: 1rem;
+    font-style: italic;
+  }
+  
+  /* Angebot Button */
+  .angebot-button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.6rem 1.2rem;
+    background-color: #E5DCCD;
+    color: #2B3340;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .angebot-button:hover {
+    background-color: #d6cdbf;
+  }
+  
+  /* Qualifikationen */
+  .qualifikationen {
+    padding: 3rem 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .qualifikationen-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  
+  .qualifikationen-grid ul {
+    flex: 1;
+    list-style: disc;
+    padding-left: 1.5rem;
+  }
+
+  /* Testimonials */
+  .testimonials-wrapper {
+    background-color: #f7f0e5;
+    padding: 4rem 1rem;
+    text-align: center;
+    position: relative;
+  }
+  
+  .testimonials-wrapper h2 {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #2B3340;
+    margin-bottom: 2rem;
+  }
+  
+  /* Carousel container */
+  .testimonial-carousel {
+    position: relative;
+    max-width: 100%;
+  }
+  
+  /* Track: horizontales Scrollen */
+  .testimonial-track {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 1rem;
+  }
+  
+  .testimonial-track::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .testimonial-box {
+    flex: 0 0 300px;
+    background-color: #fefcf8;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    min-width: 300px;
+  }
+  
+  .testimonial-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 1rem;
+  }
+  
+  .testimonial-box blockquote {
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #2B3340;
+    margin: 0;
+  }
+  
+  .testimonial-box cite {
+    margin-top: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #2B3340;
+  }
+  
+  /* Scroll buttons */
+  .scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #2B3340;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  .scroll-btn.left {
+    left: 0;
+  }
+  
+  .scroll-btn.right {
+    right: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .scroll-btn {
+      padding: 0.3rem 0.7rem;
+      font-size: 1.2rem;
+      text-align: justify;
+    }
+}
+
+    /* Kontakt */
+  .kontakt-wrapper {
+    background-color: #2B3340;
+    color: white;
+    padding: 4rem 1rem;
+    text-align: center;
+  }
+  
+  .kontakt.container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .kontakt h2 {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+  }
+  
+  .kontakt-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .kontakt-daten-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    text-align: left;
+  }
+  
+  .kontakt-portrait {
+    width: 75px;
+    height: 100px;
+    border-radius: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+  }
+  
+  .kontakt-daten {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+  
+  .kontakt-daten li {
+    margin-bottom: 0.3rem;
+  }
+  
+  .kontakt-daten li a {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  .kontakt-daten li a:hover {
+    text-decoration: none;
+  }
+  
+  /* Responsive: Bild oben, Text darunter */
+@media (max-width: 600px) {
+    .kontakt-daten-wrapper {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  /* Newsletter */
+  .newsletter {
+    padding: 4rem 1rem;
+    background-color: #1f262f;
+    color: white;
+    text-align: center;
+  }
+  
+  .newsletter h2 {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .newsletter-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    color: #ccc;
+  }
+  
+  .newsletter-iframe-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+  }  
+  
+  
+  /* Footer */
+  .main-footer {
+    background-color: #2B3340;
+    padding: 1rem 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+  }
+  
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .footer-logo img {
+    height: 20px;
+    max-width: 150px;
+  }
+  
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .footer-links a {
+    text-decoration: none;
+    color: #ffff;
+    font-weight: 500;
+  }
+  
+  .spacer {
+    height: 11rem; /* oder 2rem, je nach Bedarf */
+  }
+  
+  /* Responsive Layout */
+  @media (max-width: 768px) {
+    .about-grid {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .about-text {
+      text-align: justify;
+    }
+  
+    .qualifikationen-grid {
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .kontakt-text {
+        text-align: justify;
+  }
+}
+
+  /* Global empfohlen */
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  .impressum a {
+    color: #2B3340;
+    text-decoration: underline;
+  }
+  
+  .impressum a:hover {
+    text-decoration: none;
+  }
+
+  .about-wrapper.datenschutz a {
+    color: #2B3340;
+    text-decoration: underline;
+  }
+  
+  .about-wrapper.datenschutz a:hover {
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .about-wrapper,
+    .about {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      overflow-x: hidden;
+      word-wrap: break-word;
+      word-break: break-word;
+    }
+  
+    .about p,
+    .about li {
+      overflow-wrap: break-word;
+      word-break: break-word;
+      hyphens: auto;
+    }
+  }
