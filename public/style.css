@@ -382,6 +382,26 @@ body {
     margin-top: 1rem;
     font-style: italic;
   }
+
+  /* Standard: Nur ungeteiltes Wort zeigen */
+.coaching-title .split-word {
+  display: none;
+}
+
+.coaching-title .full-word {
+  display: inline;
+}
+
+/* Mobilansicht: Geteiltes Wort zeigen, ungeteiltes ausblenden */
+@media (max-width: 480px) {
+  .coaching-title .split-word {
+    display: inline;
+  }
+
+  .coaching-title .full-word {
+    display: none;
+  }
+}
   
   /* Angebot Button */
   .angebot-button {
