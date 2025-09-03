@@ -1,0 +1,16 @@
+{
+    "name": "1bdy-website",
+    "version": "1.0.0",
+    "description": "Coming Soon Seite für 1BDY",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "engines": {
+      "node": "18.x"
+    },
+    "dependencies": {
+      "express": "^4.18.2"
+    }
+  }
+  
